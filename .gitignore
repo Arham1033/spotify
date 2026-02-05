@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Node modules (installed packages)
+node_modules/
+
+# Next.js build files
+.next/
+
+# Song files (ignore mp3s)
+public/songs/
