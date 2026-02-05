@@ -120,14 +120,6 @@ const toggleMute = () => {
     }
   };
 
-  // // Play selected track
-  // const playTrack = (track) => {
-  //   if (!audioRef.current) return;
-  //   audioRef.current.src = `/songs/${currFolder}/${track}`;
-  //   audioRef.current.play();
-  //   setCurrentTrack(track);
-  //   setIsPlaying(true);
-  // };
 // Play selected track
 const playTrack = (track) => {
   if (!audioRef.current) return;
@@ -209,21 +201,6 @@ const changeVolume = (e) => {
           </div>
           <div className="songlist">
 
-            {/* <ul>
-  {songs.map((song, idx) => (
-    <li key={idx} onClick={() => playTrack(song)}>
-      <img className="invert" width="34" src="/images/music.svg" alt="" />
-      <div className="info">
-        <div>{song}</div>
-        <div>Arham</div>
-      </div>
-      <div className="playnow">
-        <span>Play now</span>
-        <img className="invert" src="/images/play.svg" alt="" />
-      </div>
-    </li>
-  ))}
-</ul> */}
 <ul>
   {songs.map((song, idx) => (
     <li key={idx} onClick={() => playTrack(song)}>
