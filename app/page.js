@@ -120,14 +120,35 @@ const toggleMute = () => {
     }
   };
 
-  // Play selected track
-  const playTrack = (track) => {
-    if (!audioRef.current) return;
+  // // Play selected track
+  // const playTrack = (track) => {
+  //   if (!audioRef.current) return;
+  //   audioRef.current.src = `/songs/${currFolder}/${track}`;
+  //   audioRef.current.play();
+  //   setCurrentTrack(track);
+  //   setIsPlaying(true);
+  // };
+// Play selected track
+const playTrack = (track) => {
+  if (!audioRef.current) return;
+
+  if (track === currentTrack) {
+    // If clicking the same track, toggle play/pause
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    } else {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+  } else {
+    // New track, load and play
     audioRef.current.src = `/songs/${currFolder}/${track}`;
     audioRef.current.play();
     setCurrentTrack(track);
     setIsPlaying(true);
-  };
+  }
+};
 
   // Next / Previous
   const nextTrack = () => {
@@ -188,7 +209,7 @@ const changeVolume = (e) => {
           </div>
           <div className="songlist">
 
-            <ul>
+            {/* <ul>
   {songs.map((song, idx) => (
     <li key={idx} onClick={() => playTrack(song)}>
       <img className="invert" width="34" src="/images/music.svg" alt="" />
@@ -202,7 +223,33 @@ const changeVolume = (e) => {
       </div>
     </li>
   ))}
+</ul> */}
+<ul>
+  {songs.map((song, idx) => (
+    <li key={idx} onClick={() => playTrack(song)}>
+      <img className="invert" width="34" src="/images/music.svg" alt="" />
+      <div className="info">
+        <div>{song}</div>
+        <div>Arham</div>
+      </div>
+      <div className="playnow">
+        <span>{currentTrack === song && isPlaying ? "Pause" : "Play now"}</span>
+        <img
+          className="invert"
+          src={
+            currentTrack === song
+              ? isPlaying
+                ? "/images/pause.svg"
+                : "/images/play.svg"
+              : "/images/play.svg"
+          }
+          alt=""
+        />
+      </div>
+    </li>
+  ))}
 </ul>
+
           </div>
 
 <div className="footer">
